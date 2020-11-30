@@ -1,0 +1,22 @@
+version: '3.6'
+
+services:
+
+  db:
+    image: postgres
+    container_name: pgdb
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: trc
+    ports:
+      - 5432:5432
+    volumes:
+      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+
+  adminer:
+    image: adminer
+    container_name: adm
+    restart: always
+    ports:
+      - 80:8080
