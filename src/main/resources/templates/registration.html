@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration page</title>
+</head>
+<body>
+Registration page
+<form action="/registration" method="post" modelAttribute="userForm">
+    <div><label> Full name : <input type="text" name="name"/> </label></div>
+    <div><label> Login : <input type="text" name="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><label> Age: <input type="number" name="age"/> </label></div>
+    <div><label> Role:
+        <select name="role" id="role">
+            <option th:each="role : ${T(com.example.trc.model.users.Role).values()}"
+                    th:value="${role}" th:text="${role}"></option>
+        </select>
+    </label></div>
+    <div><input type="submit" value="Sign In"/></div>
+</form>
+</body>
+</html>
